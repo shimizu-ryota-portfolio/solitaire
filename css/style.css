@@ -1,0 +1,343 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+.header {
+    position: sticky; /* headerを追従にする */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    z-index: 99;
+  }
+  .header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
+  .logo {
+    font-size: 1.25em;
+    font-weight: bold;
+  }
+  
+  /* ハンバーガーボタンのデザイン */
+  .drawer__button {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 999; /* メニューを開いている時もクリックできるよう設定 */
+  }
+  /* ハンバーガーボタン内の線 */
+  .drawer__button > span {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 2px;
+    background-color: black;
+    transform: translateX(-50%);
+  }
+  .drawer__button > span:first-child {
+    transform: translate(-50%, calc(-50% - 0.5rem));
+    transition: transform 0.3s ease;
+  }
+  .drawer__button > span:nth-child(2) {
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+  }
+  .drawer__button > span:last-child {
+    transform: translate(-50%, calc(-50% + 0.5rem));
+    transition: transform 0.3s ease;
+  }
+  /* 展開時のデザイン */
+  .drawer__button.active > span:first-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  .drawer__button.active > span:nth-child(2) {
+    opacity: 0;
+  }
+  .drawer__button.active > span:last-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  /* メニューのデザイン */
+  .drawer__nav {
+    position: fixed; /* 追従ヘッダーなどでも表示できるよう設定しておく */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .drawer__nav.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .drawer__nav__inner {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    background-color: #F6E099;
+    padding: 4rem 1.5rem 1rem;
+    margin: 0 0 0 auto;
+    overflow: scroll;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  .drawer__nav.active .drawer__nav__inner {
+    transform: translateX(0);
+  }
+  .drawer__nav__menu {
+    list-style: none;
+    padding-left: 0;
+  }
+  .drawer__nav__link {
+    display: block;
+    color: #707070;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 1rem 1rem;
+    border-bottom: solid 1px black;
+  }
+  
+  /* ハンバーガーメニュー展開時、背景を固定 */
+  body.active {
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  /* 見た目の調整 */
+  section {
+    width: 100%;
+    height: 30vh;
+  }
+  section:nth-child(even) {
+    background-color: skyblue;
+  }
+body{
+    margin: 0;
+    padding: 0;
+    color: #707070;
+    font-family: "Sitka Heading","Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    font-weight: bold;
+    background-color: #FFF5E3;
+    max-width: 100vw;
+}
+h2.h3,h4,p,dl,dt,dd {
+    margin: 0;
+    padding: 0;
+}
+.normal,.concept-text{
+    font-weight: normal;
+}
+.italic{
+    font-style: italic;
+}
+img{
+    max-width: 100%;
+    vertical-align: bottom;
+}
+h2{
+    font-size: 2.25rem;
+    line-height: 1;
+    padding: 150px 18px 0 18px;
+    line-height: 1em;
+}
+.pc-top{
+    display: none !important;
+}
+.sp-top{
+    display: block !important;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.top-logo{
+    width: 80%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+} 
+.concept {
+    text-align: center;
+}
+
+.concept-text{
+    text-align: center;
+    padding-top: 57px;
+    line-height: 2em;
+}
+h3{
+    font-size: 24px;
+    padding: 182px 18px 0 18px;
+}
+
+.menu-contents dl{
+    padding: 45px 18px 15px 0;
+}
+.food-text{
+    padding-top: 64px;
+}
+.menu-contents dt,dd{
+    padding-left: 18px;
+    line-height: 2em;
+    font-size: 18px;
+}
+.drink-item dt{
+    padding-left: 18px;
+    line-height: 2em;
+    font-size: 18px;
+}
+.drink-item dd{
+    border-bottom: 1px solid #707070;
+    text-align: right;
+    padding-right: 18px;
+    line-height: 2em;
+    font-size: 18px;
+
+}
+h4{
+    padding: 70px 0 24px 18px;
+    font-size: 20px;
+}
+.lunch-text{
+    padding: 64px 0 0 18px;
+}
+.lunch-contents{
+    padding: 0 0 30px 18px;
+}
+.dinner-text{
+    padding: 0 0 0 18px;
+}
+.dinner-contents{
+    padding: 0 0 0 18px;
+}
+.access-wrapper{
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+}
+.item-map{
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 75%;
+}
+.item-map iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 30px;
+}
+.access-info{
+    text-align: left;
+    font-size: 18px;
+    padding: 15px 0 0px 18px;
+    line-height: 1em;
+}
+.footer{
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #A7874F;
+}
+.footer-logo{
+    display: block;
+    width: 200px;
+    height: 93px;
+    position: relative;
+    left: 20px;
+}
+.footer-time{
+    padding-left: 20px;
+    padding-top: 40px;
+}
+.footer-time-contents{
+    padding-left: 40px;
+    padding-bottom: 20px;
+    line-height: 1.5em;
+}
+.footer-text{
+    padding-left: 20px;
+}
+.footer-contents{
+    padding: 0 0 20px 40px;
+}
+@media screen and (min-width:1024px){
+    .pc-top{
+        display: block !important;
+        position: relative;
+        height: 100vh;
+        width: 100%;
+    }
+    .sp-top{
+        display: none !important;
+    }
+    h2{
+        font-size: 50px;
+        text-align: center;
+    }
+    .concept-text{
+        font-size: 26px;
+    }
+    .food-text, .dessert-text, .drink-text,.lunch-text,.dinner-text{
+        font-size: 40px;
+        text-align: center;
+    }
+    .menu-contents{
+        display: inline-block;
+    }
+    .menu-wrapper{
+        text-align: center;
+    }
+    .drink-contents{
+        display: inline-block;
+        vertical-align: top;
+        padding: 30px;
+    }
+    .drink-wrapper{
+   text-align: center;
+    }
+    .lunch-contents,.dinner-contents{
+        font-size: 25px;
+        text-align: center;
+    }
+    .top-logo{
+        width: 30%;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .item-map iframe{
+        height: 50%;
+    }
+    .access-info{
+        position: absolute;
+        top: 50%;
+    }
+    .drawer__nav__link{
+        font-size: 25px;
+    }
+}
